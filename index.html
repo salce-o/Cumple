@@ -1,114 +1,55 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feliz Cumpleaños Nay 💙</title>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feliz Cumpleaños Nayelis</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Poppins,sans-serif;
-background:linear-gradient(-45deg,#09090f,#0b3c91,#1a1238,#ff4da6);
-background-size:400% 400%;
-animation:bg 14s ease infinite;
-overflow-x:hidden;
-overflow-y:auto;
-min-height:100vh;
-}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Poppins,sans-serif;background:linear-gradient(-45deg,#080910,#0b3c91,#23113a,#ff4da6);background-size:400% 400%;animation:bg 16s infinite;overflow-x:hidden}
 @keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-#intro,#main{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column}
-#main{display:none;padding:40px 15px}
-.heartWrap{text-align:center;cursor:pointer}
-.tap{margin-top:30px;color:#111;font-weight:700;background:#fff;padding:10px 20px;border-radius:999px;display:inline-block}
-svg{width:220px;filter:drop-shadow(0 0 20px #ff4da6);animation:beat 1.2s infinite}
+#intro,#letter{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+#letter{display:none}
+.heartBox{cursor:pointer;text-align:center}
+svg{width:210px;animation:beat 1.2s infinite;transition:.7s}
 @keyframes beat{50%{transform:scale(1.08)}}
-.card{
-width:min(92%,760px);
-background:rgba(255,255,255,.92);
-padding:35px;border-radius:24px;
-box-shadow:0 20px 40px rgba(0,0,0,.35);
-color:#111;
-}
-h1{font-family:"Great Vibes",cursive;text-align:center;color:#d61b7d;font-size:3.8rem}
-#msg{margin-top:20px;line-height:1.9;font-size:1.08rem;white-space:pre-wrap}
-button{margin:25px auto 0;display:block;padding:14px 28px;border:none;border-radius:40px;background:#0b3c91;color:#fff}
-.float{position:fixed;bottom:-40px;animation:up linear infinite;pointer-events:none}
-@keyframes up{to{transform:translateY(-120vh)}}
-@media(max-width:768px){
-svg{width:170px}
-h1{font-size:2.8rem}
-.card{padding:22px}
-}
-</style>
-</head>
-<body>
-<div id="intro">
-<div class="heartWrap" onclick="openLetter()">
-<svg viewBox="0 0 512 512">
-<path fill="#ff4da6" d="M256 472s-28-18-66-51C96 345 32 282 32 192 32 121 89 64 160 64c41 0 73 22 96 55 23-33 55-55 96-55 71 0 128 57 128 128 0 90-64 153-158 229-38 33-66 51-66 51z"/>
-<text x="256" y="270" text-anchor="middle" font-size="120" fill="white" font-weight="700">N</text>
-</svg>
-<div class="tap">💙 Tócame 💙</div>
-</div>
-</div>
-
-<div id="main">
-<div class="card">
-<h1>Feliz Cumpleaños, Nay 💙</h1>
-<div id="msg"></div>
-<button onclick="confetti()">Sorpresa❤️</button>
-</div>
-</div>
-
+.boom{animation:boom .8s forwards!important}
+@keyframes boom{40%{transform:scale(1.35)}100%{transform:scale(0);opacity:0;filter:blur(6px)}}
+.tap{margin-top:24px;background:#fff;color:#111;padding:10px 22px;border-radius:999px;font-weight:700}
+.card{max-width:760px;width:95%;background:rgba(255,255,255,.92);padding:34px;border-radius:24px;color:#111;box-shadow:0 20px 40px rgba(0,0,0,.4)}
+h1{font:64px "Great Vibes";color:#d51c7d;text-align:center}
+#text{white-space:pre-wrap;line-height:1.9;margin-top:18px}
+.p{position:fixed;pointer-events:none}
+@keyframes fly{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+button{margin:24px auto 0;display:block;padding:14px 28px;border:0;border-radius:999px;background:#0b3c91;color:#fff}
+@media(max-width:768px){h1{font-size:46px}svg{width:160px}}
+</style></head><body>
+<div id=intro><div class=heartBox onclick=openLetter()><svg id=heart viewBox="0 0 512 512"><path fill="#ff4da6" d="M256 472s-28-18-66-51C96 345 32 282 32 192 32 121 89 64 160 64c41 0 73 22 96 55 23-33 55-55 96-55 71 0 128 57 128 128 0 90-64 153-158 229-38 33-66 51-66 51z"/><text x="256" y="275" text-anchor="middle" font-size="120" fill="#fff" font-weight="700">N</text></svg><div class=tap>💙 Tócame 💙</div></div></div>
+<div id=letter><div class=card><h1>Feliz Cumpleaños, Nayelis 💙</h1><div id=text></div>
+<button onclick="celebrate()">💖 Gracias por leer</button>
+<audio id=music loop><source src="musica.mp3" type="audio/mpeg"></audio>
+</div></div>
 <script>
-const text=`Hay personas que llegan sin hacer mucho ruido y terminan ocupando un lugar muy especial.
+const msg=`Hay personas que llegan sin hacer mucho ruido y, sin darse cuenta, empiezan a ocupar un lugar muy bonito en el corazón.
 
-Desde que empezamos a conocernos, has conseguido que muchos de mis días sean más bonitos con una simple conversación o una sonrisa.
+Desde que comenzamos a conocernos, cada conversación contigo ha hecho que mis días tengan algo especial.
 
-Hoy quiero desearte un cumpleaños lleno de alegría, sueños cumplidos y momentos inolvidables.
+Hoy solo quiero desearte un cumpleaños lleno de sonrisas, paz, sueños cumplidos y momentos inolvidables.
 
-Gracias por permitirme compartir un pedacito de tu vida. Espero que este sea solo el comienzo de muchos recuerdos hermosos juntos.
-
-Feliz cumpleaños, Pequeña Nay.
+Espero que este sea solo el comienzo de muchos recuerdos hermosos juntos.
 
 Con muchísimo cariño,
 
-Esa coma no va alli. ❤️`;
-
+Omer ❤️`;
+function explode(){
+for(let i=0;i<70;i++){let e=document.createElement('div');e.className='p';e.textContent=Math.random()>.5?'💙':'💕';e.style.left='50vw';e.style.top='40vh';e.style.setProperty('--x',(Math.random()*600-300)+'px');e.style.setProperty('--y',(Math.random()*500-250)+'px');e.style.animation='fly 1.2s forwards';document.body.appendChild(e);setTimeout(()=>e.remove(),1200);}
+}
+function type(){let i=0,t=document.getElementById('text');let x=setInterval(()=>{t.textContent=msg.substring(0,i++);window.scrollTo(0,document.body.scrollHeight);if(i>msg.length)clearInterval(x)},22)}
 function openLetter(){
+document.getElementById('heart').classList.add('boom');
+setTimeout(()=>{
+explode();
+let m=document.getElementById('music');m.play().catch(()=>{});
 document.getElementById('intro').style.display='none';
-document.getElementById('main').style.display='flex';
-window.scrollTo({top:0,behavior:'smooth'});
-let i=0,m=document.getElementById('msg');
-let t=setInterval(()=>{
-m.textContent=text.substring(0,i++);
-if(i>text.length)clearInterval(t);
-},22);
+document.getElementById('letter').style.display='flex';
+type();
+},700);
 }
-for(let i=0;i<30;i++){
-let e=document.createElement('div');
-e.className='float';
-e.innerHTML=Math.random()>0.5?'💙':'💕';
-e.style.left=Math.random()*100+'vw';
-e.style.fontSize=(14+Math.random()*18)+'px';
-e.style.animationDuration=(8+Math.random()*8)+'s';
-e.style.animationDelay=(-Math.random()*8)+'s';
-document.body.appendChild(e);
-}
-function confetti(){
-for(let i=0;i<35;i++){
-let c=document.createElement('div');
-c.className='float';
-c.innerHTML='🎊';
-c.style.left=(45+Math.random()*10)+'vw';
-c.style.fontSize=(12+Math.random()*20)+'px';
-c.style.animationDuration=(3+Math.random()*2)+'s';
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),5000);
-}
-}
-</script>
-</body>
-</html>
+function celebrate(){explode();}
+</script></body></html>
