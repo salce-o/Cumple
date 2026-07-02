@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feliz Cumpleaños Nayelis</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Poppins,sans-serif;overflow:hidden;background:linear-gradient(-45deg,#05050d,#0b3c91,#101935,#ff5aa7);background-size:400% 400%;animation:bg 15s infinite;color:#000}
+@keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+#intro,#main{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+#main{opacity:0;pointer-events:none;transition:1s}
+.heartwrap{text-align:center;cursor:pointer;transition:.5s}
+.tap{color:#fff;margin-top:35px;font-size:1.2rem;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.3}}
+.heart{position:relative;width:180px;height:180px;background:#ff4da6;transform:rotate(-45deg);box-shadow:0 0 40px #ff4da6;animation:beat 1.2s infinite}
+.heart:before,.heart:after{content:"";position:absolute;width:180px;height:180px;background:#ff4da6;border-radius:50%}
+.heart:before{top:-90px}.heart:after{left:90px}
+@keyframes beat{50%{transform:rotate(-45deg) scale(1.08)}}
+.n{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:95px;font-weight:700;color:#fff;text-shadow:0 0 20px #fff;z-index:2}
+.card{width:min(92%,760px);background:rgba(255,255,255,.9);padding:35px;border-radius:25px;backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.4)}
+h1{font-family:"Great Vibes";font-size:4rem;color:#d81b7d;text-align:center}
+#text{font-size:1.08rem;line-height:1.8;margin-top:20px;min-height:270px}
+#cursor{display:inline-block;width:2px;background:#000;animation:blink 1s infinite}
+button{display:block;margin:25px auto 0;padding:14px 30px;border:none;border-radius:40px;background:linear-gradient(90deg,#0b7cff,#ff4da6);color:#fff;font-size:1rem}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 2s infinite}
+@keyframes twinkle{50%{opacity:.2;transform:scale(.5)}}
+.float{position:absolute;animation:up linear infinite}
+@keyframes up{from{transform:translateY(110vh)}to{transform:translateY(-120px)}}
+@media(max-width:768px){.heart,.heart:before,.heart:after{width:140px;height:140px}.heart:before{top:-70px}.heart:after{left:70px}.n{font-size:72px}h1{font-size:3rem}.card{padding:24px}#text{font-size:1rem;min-height:330px}}
+</style></head><body>
+<div id="intro">
+<div class="heartwrap" onclick="openCard()">
+<div style="position:relative">
+<div class="heart"></div>
+<div class="n">N</div>
+</div>
+<div class="tap">💙 Tócame 💙</div>
+</div>
+</div>
+
+<div id="main">
+<div class="card">
+<h1>Feliz Cumpleaños, Nayelis 💙</h1>
+<p id="text"></p><span id="cursor"></span>
+<button onclick="alert('Espero que este sea solo el comienzo de muchos momentos bonitos contigo. ❤️')">Una última cosita para ti ✨</button>
+</div>
+</div>
+
+<script>
+for(let i=0;i<80;i++){let s=document.createElement("div");s.className="star";s.style.left=Math.random()*100+"vw";s.style.top=Math.random()*100+"vh";s.style.animationDelay=Math.random()*2+"s";document.body.appendChild(s);}
+for(let i=0;i<35;i++){let h=document.createElement("div");h.className="float";h.innerHTML=Math.random()>.5?"💙":"💕";h.style.left=Math.random()*100+"vw";h.style.fontSize=(12+Math.random()*20)+"px";h.style.animationDuration=(8+Math.random()*8)+"s";h.style.animationDelay=(-Math.random()*10)+"s";document.body.appendChild(h);}
+const msg=`Hay personas que llegan a la vida sin avisar... y terminan convirtiéndose en una de las razones por las que sonríes más de lo normal.
+
+Desde que comenzamos a conocernos, cada conversación, cada risa y cada momento contigo ha hecho que mis días sean mucho más bonitos.
+
+Hoy solo quiero desearte un cumpleaños lleno de felicidad, de abrazos sinceros, de sueños cumplidos y de momentos que recuerdes con una sonrisa.
+
+Gracias por permitirme formar parte, aunque sea un poquito, de este día tan especial.
+
+Espero que este nuevo año de tu vida venga lleno de cosas increíbles... y que yo pueda seguir compartiendo muchas de ellas contigo.
+
+Con muchísimo cariño,
+
+José ❤️`;
+function type(){let i=0,t=document.getElementById("text");let x=setInterval(()=>{t.innerHTML=msg.substring(0,i).replace(/\n/g,"<br><br>");i++;if(i>msg.length)clearInterval(x);},30);}
+function openCard(){
+document.querySelector(".heartwrap").style.transform="scale(6)";
+document.querySelector(".heartwrap").style.opacity="0";
+setTimeout(()=>{intro.style.display="none";main.style.opacity=1;main.style.pointerEvents="all";type();},700);
+}
+</script>
+</body></html>
